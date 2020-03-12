@@ -1,0 +1,43 @@
+#include <Arduino.h>
+#include <LiquidCrystal.h>
+
+#define buzzer 8 
+
+int Contrast=0;
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+
+void setup() {
+  pinMode(13,OUTPUT);
+  pinMode(10,OUTPUT);
+  pinMode(9,OUTPUT);
+  pinMode(buzzer,OUTPUT);
+  analogWrite(6,Contrast);
+  lcd.begin(16, 2);
+}
+
+void loop() {
+  digitalWrite(13,HIGH);
+  delay(150);
+  tone(buzzer,5000);
+  delay(350);
+  noTone(4);
+  //delay(100);
+  digitalWrite(13,LOW);
+  
+  digitalWrite(10,HIGH);
+  delay(400);
+  digitalWrite(10,LOW);
+  
+  digitalWrite(9,HIGH); 
+  delay(400);
+  digitalWrite(9,LOW);
+  lcd.setCursor(0, 0);
+  lcd.print("Welcome to Class");
+  delay(300);
+
+  lcd.setCursor(1, 1);
+  lcd.print("RC ya p heyyy!");
+  delay(300);
+}
+ 
+
